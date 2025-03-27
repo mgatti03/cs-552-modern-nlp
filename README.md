@@ -98,8 +98,8 @@ Recording of the lectures will be made available on Mediaspace. We will reuse so
     </tr>
     <tr>
         <td><strong>Week 5</strong></td>
-        <td>19 Mar <br />20 Mar</td>
-        <td>Transfer Learning: Dataset Biases [<a href="https://github.com/epfl-nlp/cs-552-modern-nlp/tree/main/Lectures/Week%205">slides</a>, <a href="https://mediaspace.epfl.ch/media/%5B2025%5D+13+%2B+14A+Transfer+LearningA+Dataset+Biases/0_ns2zrpvy/31346">video</a>]<br />Generation: Task </td>
+        <td>19 Mar</td>
+        <td>Transfer Learning: Dataset Biases [<a href="https://github.com/epfl-nlp/cs-552-modern-nlp/tree/main/Lectures/Week%205">slides</a>, <a href="https://mediaspace.epfl.ch/media/%5B2025%5D+13+%2B+14A+Transfer+LearningA+Dataset+Biases/0_ns2zrpvy/31346">video</a>] </td>
         <td>Suggested reading: -</td>
         <td>Antoine Bosselut</td>
     </tr>
@@ -113,7 +113,7 @@ Recording of the lectures will be made available on Mediaspace. We will reuse so
     <tr>
         <td><strong>Week 6</strong></td>
         <td>26 Mar <br />27 Mar</td>
-        <td>Text Generation: Decoding  & Training  <br />Text Generation: Evaluation </td>
+        <td>Text Generation: Decoding  & Training  [<a href="https://github.com/epfl-nlp/cs-552-modern-nlp/tree/main/Lectures/Week%206">slides</a>, <a href="https://mediaspace.epfl.ch/media/%5B2025%5D+16-17A+Natural+Language+GenerationA+Task%2C+Decoding+%26+Training/0_ekiqgbt5/31346">video</a>]<br />Text Generation: Evaluation </td>
         <td>Suggested reading: <ul><li>Decoding: <a href="https://arxiv.org/abs/1503.03535">On Using Monolingual Corpora in Neural Machine Translation</a></li><li>Decoding: <a href="https://arxiv.org/abs/1609.08144">Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation</a></li><li>Decoding: <a href="https://arxiv.org/abs/1604.01729">Improving LSTM-based Video Description with Linguistic Knowledge Mined from Text</a></li><li>Decoding: <a href="https://arxiv.org/abs/1510.03055">A Diversity-Promoting Objective Function for Neural Conversation Models</a></li><li>Decoding: <a href="https://arxiv.org/abs/1705.04304">A Deep Reinforced Model for Abstractive Summarization</a></li><li>Decoding: <a href="https://arxiv.org/abs/1803.10357">Deep Communicating Agents for Abstractive Summarization</a></li><li>Decoding: <a href="https://arxiv.org/abs/1805.06087">Learning to Write with Cooperative Discriminators</a></li><li>Decoding: <a href="https://arxiv.org/abs/1805.04833">Hierarchical Neural Story Generation</a></li><li>Decoding: <a href="https://arxiv.org/abs/1907.01272">Discourse Understanding and Factual Consistency in Abstractive Summarization</a></li><li>Decoding: <a href="https://arxiv.org/abs/1912.02164">Plug and Play Language Models: A Simple Approach to Controlled Text Generation</a></li><li>Decoding: <a href="https://arxiv.org/abs/1904.09751">The Curious Case of Neural Text Degeneration</a></li><li>Decoding: <a href="https://arxiv.org/abs/1911.00172">Generalization through Memorization: Nearest Neighbor Language Models</a></li><li>Training: <a href="https://arxiv.org/abs/1506.03099">Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks</a></li><li>Training: <a href="https://arxiv.org/abs/1511.06732">Sequence Level Training with Recurrent Neural Networks</a></li><li>Training: <a href="https://arxiv.org/abs/1609.08144"> Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation</a></li><li>Training: <a href="https://arxiv.org/abs/1704.03899">Deep Reinforcement Learning-based Image Captioning with Embedding Reward</a></li><li>Training: <a href="https://arxiv.org/abs/1612.00563">Self-critical Sequence Training for Image Captioning</a></li><li>Training: <a href="https://arxiv.org/abs/1612.00370">Improved Image Captioning via Policy Gradient Optimization of SPIDEr</a></li><li>Training: <a href="https://arxiv.org/abs/1703.10931">Sentence Simplification with Deep Reinforcement Learning</a></li><li>Training: <a href="https://arxiv.org/abs/1705.04304">A Deep Reinforced Model for Abstractive Summarization</a></li><li>Training: <a href="https://arxiv.org/abs/1803.10357">Deep Communicating Agents for Abstractive Summarization</a></li><li>Training: <a href="https://arxiv.org/abs/1805.03766">Discourse-Aware Neural Rewards for Coherent Text Generation</a></li><li>Training: <a href="https://arxiv.org/abs/1805.03162">Polite Dialogue Generation Without Parallel Data</a></li><li>Training: <a href="https://arxiv.org/abs/1711.00279">Paraphrase Generation with Deep Reinforcement Learning</a></li><li>Training: <a href="https://arxiv.org/abs/1904.09751">The Curious Case of Neural Text Degeneration</a></li></ul></td>
         <td>Antoine Bosselut</td>
     </tr>
@@ -184,7 +184,17 @@ Recording of the lectures will be made available on Mediaspace. We will reuse so
         <td><strong>Week 10</strong></td>
         <td>30 Apr <br />1 May</td>
         <td>Multimodality <br /><strong>No class</strong> (Work on your project)</td>
-        <td>Suggested reading: -</td>
+        <td>Suggested reading: <ul>
+            <li><a href="https://arxiv.org/pdf/2405.17247">An Introduction to Vision-Language Modeling</a></li>
+            <li><a href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/a03037317560b8c5f2fb4b6466d4c439-Abstract-Conference.html">What matters when building vision-language models?</a></li>
+            <li><a href="https://papers.nips.cc/paper_files/paper/2023/hash/6dcf277ea32ce3288914faf369fe6de0-Abstract-Conference.html">LLAVA: Visual Instruction Tuning</a></li>
+            <li><a href="https://arxiv.org/pdf/2412.05271">InternVL2.5: Expanding Performance Boundaries of Open-Source Multimodal Models with Model, Data, and Test-Time Scaling</a></li>
+            <li><a href="https://arxiv.org/pdf/2307.06281">MMBench: Is Your Multi-modal Model an All-around Player?</a></li>
+            <li><a href="https://arxiv.org/pdf/2404.12390">BLINK: Multimodal Large Language Models Can See but Not Perceive</a></li>
+            <li><a href="https://arxiv.org/pdf/2311.12793">ShareGPT4V: Improving Large Multi-Modal Models with Better Captions</a></li>
+            <li><a href="https://arxiv.org/pdf/2306.15195">Shikra: Unleashing Multimodal LLM's Referential Dialogue Magic</a></li>
+            <li><a href="https://arxiv.org/pdf/2405.16700">Implicit Multimodal Alignment: On the Generalization of Frozen LLMs to Multimodal Inputs</a></li>
+            </ul></td>
         <td>Syrielle Montariol <br />Antoine Bosselut</td>
     </tr>
     <tr>
