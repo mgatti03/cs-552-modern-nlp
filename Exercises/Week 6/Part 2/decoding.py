@@ -1,6 +1,7 @@
 import torch
 from typing import Any, Dict
 from utils import *
+import torch.nn.functional as F
 
 
 class GreedySearchDecoderForCausalLM(GeneratorForCausalLM):
@@ -59,14 +60,14 @@ class GreedySearchDecoderForCausalLM(GeneratorForCausalLM):
 
         # Loop over maximum amount of tokens, which can be stopped earlier by 
         # encountering an eos token
-        for t in range(...):
+        for t in range(max_new_tokens):
             # Get logprobs for the next token
             with torch.no_grad():
                 outputs = self.model(**model_inputs)
-            logits = ...
-            log_probs = ...
-            
-            new_token_id = ...
+            logits = outputs.logits[:, -1, :]
+            log_probs = torch.log(F.softmax(logits, dim=-1))
+
+            new_token_id = torch.argmax(log_probs, dim=-1)
 
             # Prepare the next inputs to the model with new_token_id
             model_inputs = self.prepare_next_inputs(
@@ -76,7 +77,7 @@ class GreedySearchDecoderForCausalLM(GeneratorForCausalLM):
 
             # Early stopping: if EOS token, stop decoding
             if new_token_id == self.eos_token_id:
-                ...
+                break
         
         # Return the sequence generated
         print(model_inputs["input_ids"].device)
@@ -172,25 +173,27 @@ class BeamSearchDecoderForCausalLM(GeneratorForCausalLM):
             'model_inputs': model_inputs,
             'length': 0.0
         }]
-
         # Loop over maximum amount of tokens, which can be stopped earlier when 
         # ALL beams have encountered an eos token
-        for t in range(...):
+        for t in range(max_new_tokens):
             # Keep track of candidates num_beams depth in this round of time step
             candidates = []
-            for b in ...:
+            for b in beams:
                 # If last token was EOS automatically add to candidates
                 # Otherwise carry on with score calculation
                 if b["model_inputs"]["input_ids"][0][-1] == self.eos_token_id:
-                    ...
+                    candidates.append(b)
                 else:
                     # Get logprobs for the next token
                     with torch.no_grad():
                         model_inputs = b["model_inputs"]
                         outputs = self.model(**model_inputs)
-                    logits = ...
-                    log_probs = ...
-                    topk_log_probs, topk_tokens = torch.topk(...)
+                        
+                    logits = outputs.logits[:, -1, :]
+                    log_probs = F.log_softmax(logits, dim=-1)
+                    topk_log_probs, topk_tokens = torch.topk(log_probs, k=num_beams)
+                    topk_log_probs = topk_log_probs.squeeze(0)
+                    topk_tokens = topk_tokens.squeeze(0)
 
                     # Loop over top k=num_beams tokens, build their next input and calculate their score
                     for log_prob, new_token_id in zip(topk_log_probs, topk_tokens):
@@ -206,7 +209,7 @@ class BeamSearchDecoderForCausalLM(GeneratorForCausalLM):
 
                         # Keep the penalty score separate from the raw sequence scores
                         tot_length = new_beam['length']
-                        new_beam.update({'length_penalized_score': ...}) # simply set this to new_beam['score'] for the without-length-penalty case
+                        new_beam.update({'length_penalized_score': new_beam['score']}) # simply set this to new_beam['score'] for the without-length-penalty case
 
                         # Add new candidate beam to candidates list
                         candidates.append(new_beam)
@@ -224,7 +227,7 @@ class BeamSearchDecoderForCausalLM(GeneratorForCausalLM):
                     all_beams_over = False
                     break
             if all_beams_over:
-                ...
+                break
         
         # Fit all the generated sequence into one tensor in the order from best to worst
         # Pad the sentences that are shorter than max_length

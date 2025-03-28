@@ -18,7 +18,10 @@ class TopKSamplerForCausalLM(GeneratorForCausalLM):
 
     def sample_helper(self, logits, k, temperature):
         # Helper function for the solution.
-        values, indices = torch.topk(...) # read the documentation of torch.topk to understand the parameters
+        scaled_logits = logits / temperature
+        values, indices = torch.topk(torch.log_softmax(scaled_logits, dim=-1), k, dim=-1) # read the documentation of torch.topk to understand the parameters
+        values = values.squeeze(0)
+        indices = indices.squeeze(0)
         probabilities = torch.softmax(values, dim=-1)
         selected_index = torch.multinomial(probabilities, 1)
         next_token_id = indices[selected_index]
@@ -79,12 +82,12 @@ class TopKSamplerForCausalLM(GeneratorForCausalLM):
 
         # Loop over maximum amount of tokens, which can be stopped earlier by 
         # encountering an eos token
-        for t in range(...):
+        for t in range(max_new_tokens):
             # Sample from the top-k dsitribution for the next token
             with torch.no_grad():
                 outputs = self.model(**model_inputs)
-            logits = ...
-            new_token_id = ... # you can use the sample_helper function to get the new token id
+            logits = outputs.logits[:, -1, :]
+            new_token_id = self.sample_helper(logits, top_k, temperature) # you can use the sample_helper function to get the new token id
 
             # Prepare the next inputs to the model with new_token_id
             model_inputs = self.prepare_next_inputs(
@@ -94,7 +97,7 @@ class TopKSamplerForCausalLM(GeneratorForCausalLM):
             
             # Early stopping: if EOS token, stop decoding
             if new_token_id == self.eos_token_id:
-                ...
+                break
         
         # Return the sequence generated
         return model_inputs["input_ids"]
@@ -117,7 +120,8 @@ class TopPSamplerForCausalLM(GeneratorForCausalLM):
         # Helper function for the solution.
 
         # Sort the scaled logits and get cumulative probs
-        sorted_logits, sorted_indices = ...
+        scaled_logits = logits / temperature
+        sorted_logits, sorted_indices = torch.sort(scaled_logits, dim=-1, descending=True)
         cumulative_probs = torch.cumsum(torch.softmax(sorted_logits, dim=-1), dim=-1)
         # print(cumulative_probs)
         torch.set_printoptions(profile="full")
@@ -137,7 +141,12 @@ class TopPSamplerForCausalLM(GeneratorForCausalLM):
         # Sample from the remaining distribution
         probabilities = torch.softmax(sorted_logits, dim=-1)
         selected_index = torch.multinomial(probabilities, 1)
-        selected_token = sorted_indices[selected_index]
+        # selected_token = sorted_indices[selected_index]
+        
+        batch_size = logits.shape[0]
+        batch_indices = torch.arange(batch_size, device=logits.device)
+        selected_token = sorted_indices[batch_indices, selected_index.squeeze(-1)]  
+        
         return selected_token
     
     @torch.no_grad()
@@ -198,13 +207,12 @@ class TopPSamplerForCausalLM(GeneratorForCausalLM):
 
         # Loop over maximum amount of tokens, which can be stopped earlier by 
         # encountering an eos token
-        for _ in range(...):
+        for _ in range(max_new_tokens):
             # Sample from the top-p dsitribution for the next token
             with torch.no_grad():
                 outputs = self.model(**model_inputs)
-            logits = ...
-            new_token_id = ... # you can use the sample_helper function to get the new token id
-
+            logits = outputs.logits[:, -1, :]
+            new_token_id = self.sample_helper(logits, top_p, temperature) # you can use the sample_helper function to get the new token id
             # Prepare the next inputs to the model with new_token_id
             model_inputs = self.prepare_next_inputs(
                 model_inputs = model_inputs,
@@ -213,7 +221,7 @@ class TopPSamplerForCausalLM(GeneratorForCausalLM):
 
             # Early stopping: if EOS token, stop decoding
             if new_token_id == self.eos_token_id:
-                ...
+                break
         
         # Return the sequence generated
         return model_inputs["input_ids"]
