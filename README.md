@@ -315,17 +315,24 @@ The project will be divided into the project proposal (1%), 2 milestones (19%) a
 More details on the content of the project and the deliverables of each milestone will be released at a later date.
 <!-- Registration details can be found in the announcement [here][1p]. -->
 
+#### Proposal
+- Release Date: 16 Apr 2025
+- **Due Date: 4 May 2025**
+
 #### Milestone 1:
-- Due: 4 May 2025
+- Release Date: 28 Apr 2025
+- **Due Date: 11 May 2025**
 
 #### Milestone 2:
 <!-- - Milestone 2 parameters can be found in the [project description][2p]. -->
-- Due: 18 May 2025
+- Release Date: 12 May 2025
+- **Due Date: 25 May 2025**
 
 #### Final Deliverable:
-- The final report, code, and date will be due on June 8th. Students are welcome to turn in their materials ahead of time, as soon as the semester ends.
+_The final report, code, and date will be due on June 8th. Students are welcome to turn in their materials ahead of time, as soon as the semester ends._
 <!-- - More details can be found in the [project description][2p]. -->
-- Due: 8 June 2025
+- Release Date: 25 May 2025
+- **Due Date: 08 Jun 2025**
 
 
 <a name="contact"></a>
