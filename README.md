@@ -141,7 +141,7 @@ Recording of the lectures will be made available on Mediaspace. We will reuse so
         <tr>
         <td><strong>Week 8</strong></td>
         <td>9 Apr <br />10 Apr</td>
-        <td><strong>Midterm</strong> <br/> Project Description [<a href="https://github.com/epfl-nlp/cs-552-modern-nlp/tree/main/Lectures/Week%208">slides</a>]</td>
+        <td><strong>Midterm</strong> <br/> Project Description [<a href="https://github.com/epfl-nlp/cs-552-modern-nlp/tree/main/Lectures/Week%208">slides</a>, <a href="https://mediaspace.epfl.ch/media/%5B2025%5D+Project+description/0_9ag3yup3/31346">video</a>]</td>
         <td></td>
         <td>Antoine Bosselut</td>
     </tr>
