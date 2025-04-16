@@ -155,7 +155,7 @@ Recording of the lectures will be made available on Mediaspace. We will reuse so
         <tr>
         <td><strong>Week 9</strong></td>
         <td>16 Apr May <br />17 Apr</td>
-        <td>Retrieval-Augmented LLMs &#124; Agents <br /><strong>No class</strong> (Work on your project)</td>
+        <td>Tokenization + Retrieval-Augmented LLMs &#124; Agents [<a href="https://github.com/epfl-nlp/cs-552-modern-nlp/tree/main/Lectures/Week%209">slides</a>]<br /><strong>No class</strong> (Work on your project)</td>
         <td>Suggested reading: <ul><li><a href="https://arxiv.org/abs/1606.05250">Squad: 100,000+ questions for machine comprehension of text</a></li><li><a href="https://aclanthology.org/Q19-1026/">Natural questions: a benchmark for question answering research</a></li><li><a href="https://arxiv.org/abs/2004.04906">Dense passage retrieval for open-domain question answering</a></li><li><a href="https://proceedings.mlr.press/v119/guu20a.html">Retrieval augmented language model pre-training</a></li><li><a href="https://arxiv.org/abs/2005.11401">Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</a></li><li><a href="https://arxiv.org/abs/2302.04761">Toolformer: Language models can teach themselves to use tools</a></li><li><a href="https://arxiv.org/abs/2210.03629">React: Synergizing reasoning and acting in language models</a></li><li><a href="https://arxiv.org/abs/2112.04426">Improving language models by retrieving from trillions of tokens</a></li><li><a href="https://arxiv.org/abs/2302.07842">Augmented language models: a survey</a></li></ul></td>
         <td>Antoine Bosselut</td>
     </tr>
